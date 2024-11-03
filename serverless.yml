@@ -1,0 +1,38 @@
+service: melodia-back
+
+frameworkVersion: '3'
+package:
+  individually: true
+  excludeDevDependencies: true
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: nodejs20.x
+  stage: dev
+  timeout: 30
+
+custom:
+  esbuild:
+    bundle: true
+    minify: true
+    sourcemap: true
+    keepNames: true
+    # watch:
+    #   pattern:
+    #     - "src/**/*.ts"
+    #   ignore:
+    #     - "src/**/*.test.ts"
+    external:
+      - knex
+      - sharp
+    packagerOptions:
+      scripts:
+        - npm install --os=linux --cpu=x64 sharp
+
+plugins:
+  - serverless-esbuild
+  - serverless-offline
+
+functions:
+  - ${src/cmd/function/artist/create/handler.ts}
