@@ -1,0 +1,6 @@
+create-user:
+  handler: src/cmd/function/user/create/handler.handler
+  events:
+    - http:
+        method: POST
+        path: /
