@@ -33,7 +33,6 @@ const setDependencies = (databaseConnection: DatabaseConnection) => {
 
 export const handler = async (event: APIGatewayEvent, context: Context) => {
   logger.setEvent(env.SERVICE, event);
-
   logger.debug({ message: 'Event Received', data: event });
 
   databasePool = await PoolFactory.getPool(env.DATABASE);

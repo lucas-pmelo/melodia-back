@@ -18,21 +18,16 @@ custom:
     minify: true
     sourcemap: true
     keepNames: true
-    # watch:
-    #   pattern:
-    #     - "src/**/*.ts"
-    #   ignore:
-    #     - "src/**/*.test.ts"
+    watch:
+      pattern: 'src/**/*.ts'
+      ignore: 'src/**/*.test.ts'
     external:
       - knex
       - sharp
-    packagerOptions:
-      scripts:
-        - npm install --os=linux --cpu=x64 sharp
 
 plugins:
   - serverless-esbuild
   - serverless-offline
 
 functions:
-  - ${src/cmd/function/artist/create/handler.ts}
+  - ${file(src/cmd/function/artist/create/handler.yml)}

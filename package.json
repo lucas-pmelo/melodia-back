@@ -3,7 +3,8 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "validate": "npx tsc -noEmit --skipLibCheck"
+    "validate": "npx tsc -noEmit --skipLibCheck",
+    "start": "serverless offline"
   },
   "devDependencies": {
     "@types/bun": "latest",

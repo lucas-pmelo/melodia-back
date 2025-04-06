@@ -12,14 +12,14 @@ export interface ArtistProps extends EntityProps {
 }
 
 export class Artist extends Entity {
-  createdAt: Date;
-  updatedAt: Date;
   name: string;
   email: string;
-  password: string;
-  uri: string;
-  image: string;
   genre: string[];
+  password: string;
+  uri?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+  image?: string;
 
   constructor(input: ArtistProps) {
     super(input.id);
