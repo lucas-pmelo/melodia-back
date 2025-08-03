@@ -1,6 +1,6 @@
+import { ConflictError } from '@lucas-pmelo/lambda-handlers';
 import logger from '@lucas-pmelo/logger';
 import { Artist } from '../entities/artist';
-import { ConflictError } from '@lucas-pmelo/lambda-handlers';
 import { ArtistRepository } from '../repositories/artist';
 
 type Input = {
@@ -18,7 +18,7 @@ export class CreateArtistUseCase {
     const artist = await this.artistRepository.findByName(input.name);
 
     if (artist) {
-      const message = 'Artist already existss';
+      const message = 'Artist already exists';
       logger.warn({
         message: message,
         data: artist,

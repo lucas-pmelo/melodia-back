@@ -5,26 +5,26 @@ import {
 } from '@lucas-pmelo/database';
 import { ApiHandler } from '@lucas-pmelo/lambda-handlers';
 import logger from '@lucas-pmelo/logger';
-import { CreateArtistHandler } from 'adapters/input/artist/create';
+import { FindArtistHandler } from 'adapters/input/artist/find';
 import { ArtistRepository } from 'adapters/output/database/artist/postgres/artist-repository';
 import { APIGatewayEvent, Context } from 'aws-lambda';
 import { env } from 'infrastructure/env';
-import { CreateArtistUseCase } from '~/domain/artist/use-case/create';
+import { FindArtistUseCase } from '~/domain/artist/use-case/find';
 
 let databasePool: DatabasePool;
 let artistRepository: ArtistRepository;
-let createArtistHandler: CreateArtistHandler;
-let createArtistUseCase: CreateArtistUseCase;
+let findArtistHandler: FindArtistHandler;
+let findArtistUseCase: FindArtistUseCase;
 let apiHandler: ApiHandler;
 
 const setDependencies = (databaseConnection: DatabaseConnection) => {
   artistRepository = new ArtistRepository(databaseConnection);
 
-  createArtistUseCase = new CreateArtistUseCase(artistRepository);
+  findArtistUseCase = new FindArtistUseCase(artistRepository);
 
-  createArtistHandler = new CreateArtistHandler(createArtistUseCase);
+  findArtistHandler = new FindArtistHandler(findArtistUseCase);
 
-  apiHandler = new ApiHandler(createArtistHandler.handler);
+  apiHandler = new ApiHandler(findArtistHandler.handler);
 };
 
 export const handler = async (event: APIGatewayEvent, context: Context) => {

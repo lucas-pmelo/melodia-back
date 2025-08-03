@@ -4,7 +4,9 @@
   "type": "module",
   "scripts": {
     "validate": "npx tsc -noEmit --skipLibCheck",
-    "start": "serverless offline"
+    "start": "serverless offline",
+    "test": "jest --runInBand --detectOpenHandles --forceExit",
+    "fullcheck": "npx tsc -noEmit --skipLibCheck && npx jest --runInBand --detectOpenHandles --forceExit"
   },
   "devDependencies": {
     "@types/bun": "latest",

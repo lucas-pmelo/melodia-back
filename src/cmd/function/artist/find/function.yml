@@ -1,0 +1,6 @@
+find-artist:
+  handler: src/cmd/function/artist/find/handler.handler
+  events:
+    - http:
+        method: GET
+        path: /artist/${id}

@@ -1,6 +1,6 @@
-create-user:
-  handler: src/cmd/function/user/create/handler.handler
+create-artist:
+  handler: src/cmd/function/artist/create/handler.handler
   events:
     - http:
         method: POST
-        path: /
+        path: /artist

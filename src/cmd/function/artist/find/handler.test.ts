@@ -7,14 +7,14 @@ import { APIGatewayEvent, Context } from 'aws-lambda';
 import { mock } from 'jest-mock-extended';
 import { handler } from './handler';
 
-describe('Handler - Create Artist', () => {
+describe('Handler - Find Artist', () => {
   const poolFactoryMock = jest.mocked(PoolFactory);
 
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
-  it('should call createArtist', async () => {
+  it('should call findArtist', async () => {
     const dbClientMock = mock<DatabasePool>();
 
     poolFactoryMock.getPool.mockResolvedValue(dbClientMock);
